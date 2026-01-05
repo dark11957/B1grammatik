@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>German Word Order — Position 0, Inversion & Nebensatz (Handwritten Notes Style)</title>
+
+  <!-- Same handwritten-ish look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --paper:#fffdf7;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --good:#059669;
+      --warn:#b45309;
+      --danger:#dc2626;
+      --box:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.07);
+      --border: 2px solid rgba(31,41,55,.10);
+      --radius: 18px;
+      --marker:#ffef99;
+      --marker2:#d9f6ff;
+      --marker3:#e7ddff;
+
+      --tblBorder: 1px solid rgba(31,41,55,.16);
+      --tblHead: rgba(37,99,235,.08);
+      --tblRow: rgba(31,41,55,.02);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body { height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37,99,235,.08), transparent 35%),
+        radial-gradient(circle at 90% 15%, rgba(124,58,237,.10), transparent 40%),
+        radial-gradient(circle at 70% 90%, rgba(5,150,105,.10), transparent 40%),
+        linear-gradient(180deg, #ffffff, #fbfbff 40%, #fffdf7);
+      color:var(--ink);
+      font-family: "Patrick Hand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.35;
+    }
+
+    .paper{
+      max-width: 1050px;
+      margin: 32px auto;
+      padding: 34px 22px 60px;
+      background:
+        linear-gradient(transparent, transparent 25px, rgba(31,41,55,.06) 26px) 0 0 / 100% 26px,
+        linear-gradient(90deg, rgba(37,99,235,.10), rgba(37,99,235,.10)) 78px 0 / 2px 100% no-repeat,
+        var(--paper);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(31,41,55,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .paper::before, .paper::after{
+      content:"";
+      position:absolute;
+      width:120px;
+      height:30px;
+      background: rgba(255,239,153,.75);
+      top: 18px;
+      left: -18px;
+      transform: rotate(-8deg);
+      border: 1px dashed rgba(31,41,55,.15);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+    .paper::after{
+      top:auto;
+      left:auto;
+      right:-18px;
+      bottom: 18px;
+      transform: rotate(7deg);
+      background: rgba(217,246,255,.75);
+    }
+
+    header{
+      padding-left: 92px;
+      padding-right: 12px;
+      margin-bottom: 18px;
+    }
+
+    h1{
+      font-family: "Caveat", "Patrick Hand", cursive;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      margin: 4px 0 8px;
+      letter-spacing: .5px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 0 0 14px;
+      max-width: 90ch;
+    }
+
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin: 10px 0 0;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(37,99,235,.08);
+      border: 1px solid rgba(37,99,235,.18);
+      color: rgba(31,41,55,.85);
+      font-size: 1rem;
+    }
+    .pill strong{
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing:.2px;
+    }
+
+    main{
+      padding-left: 92px;
+      padding-right: 12px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .card{
+      background: var(--box);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 14px;
+      box-shadow: 0 12px 22px rgba(0,0,0,.05);
+      position: relative;
+    }
+
+    .card h2{
+      font-family:"Caveat","Patrick Hand", cursive;
+      font-size: 1.9rem;
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap: wrap;
+    }
+
+    .tag{
+      font-size: .95rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,.14);
+      color: rgba(31,41,55,.7);
+      background: rgba(31,41,55,.03);
+    }
+
+    .rule{
+      margin: 8px 0;
+      padding: 10px 12px;
+      border-left: 5px solid rgba(37,99,235,.45);
+      background: rgba(37,99,235,.06);
+      border-radius: 14px;
+    }
+
+    .example{
+      margin: 10px 0 0;
+      padding: 10px 12px;
+      border-left: 5px solid rgba(5,150,105,.45);
+      background: rgba(5,150,105,.06);
+      border-radius: 14px;
+    }
+
+    .note{
+      background: rgba(124,58,237,.07);
+      border: 1px solid rgba(124,58,237,.18);
+      padding: 10px 12px;
+      border-radius: 14px;
+      margin-top: 10px;
+      color: rgba(31,41,55,.88);
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(31,41,55,.10);
+      margin: 14px 0;
+    }
+
+    .hl{
+      background: linear-gradient(transparent 55%, var(--marker) 55%);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+    .hl2{
+      background: linear-gradient(transparent 55%, var(--marker2) 55%);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+    .hl3{
+      background: linear-gradient(transparent 55%, var(--marker3) 55%);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .95em;
+      background: rgba(31,41,55,.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(31,41,55,.12);
+      white-space: nowrap;
+    }
+
+    .kbd{
+      display:inline-block;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(31,41,55,.06);
+      border: 1px solid rgba(31,41,55,.14);
+      color: rgba(31,41,55,.85);
+      font-size: .95rem;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    table{
+      width:100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow:hidden;
+      border: 1px solid rgba(31,41,55,.16);
+      border-radius: 14px;
+      background: #fff;
+      margin-top: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,.04);
+    }
+
+    th, td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(31,41,55,.16);
+      vertical-align: top;
+      font-size: 1.05rem;
+    }
+
+    th{
+      background: rgba(37,99,235,.08);
+      color: rgba(31,41,55,.88);
+      text-align: left;
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+    }
+
+    tr:nth-child(even) td{
+      background: rgba(31,41,55,.02);
+    }
+
+    tr:last-child td{
+      border-bottom: none;
+    }
+
+    .col-small{ width: 22%; }
+    .col-mid{ width: 30%; }
+
+    .ok{ color: var(--good); font-weight: 700; }
+    .no{ color: var(--danger); font-weight: 700; }
+
+    .footer{
+      padding-left: 92px;
+      padding-right: 12px;
+      margin-top: 22px;
+      color: rgba(31,41,55,.75);
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 820px){
+      .paper{ margin: 14px; padding: 22px 14px 50px; }
+      header, main, .footer { padding-left: 18px; }
+      .paper{ background:
+        linear-gradient(transparent, transparent 25px, rgba(31,41,55,.06) 26px) 0 0 / 100% 26px,
+        var(--paper);
+      }
+      .paper::before, .paper::after{ display:none; }
+      .grid2{ grid-template-columns: 1fr; }
+      th{ position: static; }
+    }
+    .nav-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-toggle {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37,99,235,.10);
+      border: 1px solid rgba(37,99,235,.20);
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: "Patrick Hand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.30);
+    }
+
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--box);
+      border: var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-width: 220px;
+      z-index: 1000;
+      margin-top: 10px;
+      padding: 12px 0;
+    }
+
+    .nav-dropdown.active {
+      display: block;
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(37,99,235,.06);
+      border-left-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .nav-dropdown a.current {
+      background: rgba(37,99,235,.10);
+      border-left-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+  <script>
+    function toggleNav() {
+      const dropdown = document.getElementById('navDropdown');
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(event) {
+      const container = document.querySelector('.nav-container');
+      if (container && !container.contains(event.target)) {
+        document.getElementById('navDropdown').classList.remove('active');
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="paper">
+    <header>
+      <h1>Word Order Notes — <span class="hl2">Position 0</span>, <span class="hl">Inversion</span> & <span class="hl3">Nebensatz</span></h1>
+      <p class="subtitle">
+        This page matches your handwritten notes:
+        <span class="hl2"><b>Position 0 (ADUSO)</b></span> → no word order change,
+        <span class="hl"><b>Inversion</b></span> → something first → subject after verb,
+        <span class="hl3"><b>Nebensatz</b></span> → verb goes to the end.
+      </p>
+
+      <div class="meta">
+        <span class="pill"><strong>ADUSO</strong> = aber/denn/und/sondern/oder</span>
+        <span class="pill"><strong>Inversion</strong> = first element → verb 2 → subject after</span>
+        <span class="pill"><strong>Nebensatz</strong> = verb at the end</span>
+      </div>
+
+        <div class="nav-container">
+          <button class="nav-toggle" onclick="toggleNav()">📚 Jump to Topic</button>
+          <div class="nav-dropdown" id="navDropdown">
+            <a href="topic-01.html">Topic 01</a>
+            <a href="topic-02.html">Topic 02</a>
+            <a href="topic-03.html">Topic 03</a>
+            <a href="topic-04.html">Topic 04</a>
+            <a href="topic-05.html">Topic 05</a>
+            <a href="topic-06.html">Topic 06</a>
+            <a href="topic-07.html">Topic 07</a>
+            <a href="topic-08.html">Topic 08</a>
+            <a href="topic-09.html">Topic 09</a>
+            <a href="topic-10.html">Topic 10</a>
+            <a href="topic-11.html">Topic 11</a>
+            <a href="topic-12.html">Topic 12</a>
+            <a href="topic-13.html">Topic 13</a>
+            <a href="topic-14.html">Topic 14</a>
+            <a href="topic-15.html">Topic 15</a>
+            <a href="prep.html" class="current">📝 Prep Notes</a>
+            <a href="summarytable.html">📊 Summary Table</a>
+            <a href="index2.html" style="border-top: 1px solid rgba(31,41,55,.10); color: var(--accent2);">← Back to Hub</a>
+          </div>
+        </div>
+    </header>
+
+    <main>
+      <!-- POSITION 0 -->
+      <section class="card" id="position-0">
+        <h2>1) Position 0 (Nullposition) — <span class="hl2">ADUSO</span> <span class="tag">Main clause</span></h2>
+
+        <div class="rule">
+          <b>Position 0 conjunctions</b> connect two main clauses and <span class="hl">do NOT change word order</span>.
+          The second clause is still a normal main clause: <span class="hl2">verb in position 2</span>.
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="col-small">Letter</th>
+              <th>Conjunction</th>
+              <th>Meaning</th>
+              <th>Example (2 main clauses)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>A</b></td>
+              <td><span class="hl2"><b>aber</b></span></td>
+              <td>but</td>
+              <td>✅ Ich lerne Deutsch, <span class="hl2">aber</span> ich mache Fehler.</td>
+            </tr>
+            <tr>
+              <td><b>D</b></td>
+              <td><span class="hl2"><b>denn</b></span></td>
+              <td>because (main clause!)</td>
+              <td>✅ Ich bleibe zu Hause, <span class="hl2">denn</span> ich bin krank.</td>
+            </tr>
+            <tr>
+              <td><b>U</b></td>
+              <td><span class="hl2"><b>und</b></span></td>
+              <td>and</td>
+              <td>✅ Er arbeitet viel, <span class="hl2">und</span> er studiert auch.</td>
+            </tr>
+            <tr>
+              <td><b>S</b></td>
+              <td><span class="hl2"><b>sondern</b></span></td>
+              <td>but rather (after a negation)</td>
+              <td>✅ Ich trinke keinen Tee, <span class="hl2">sondern</span> ich trinke Kaffee.</td>
+            </tr>
+            <tr>
+              <td><b>O</b></td>
+              <td><span class="hl2"><b>oder</b></span></td>
+              <td>or</td>
+              <td>✅ Wir gehen ins Kino, <span class="hl2">oder</span> wir bleiben zu Hause.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <b>Important:</b> <span class="hl2">denn</span> = because (main clause) ✅<br/>
+          <span class="hl3">weil</span> = because (subordinate clause) → verb at the end ✅
+        </div>
+      </section>
+
+      <!-- INVERSION -->
+      <section class="card" id="inversion">
+        <h2>2) Inversion — Adverbs first <span class="tag">Verb stays in position 2</span></h2>
+
+        <div class="rule">
+          <b>Inversion rule:</b> If an <span class="hl2">adverb / time / place</span> is in position 1,
+          then the <span class="hl">subject goes after the verb</span>.
+          <div class="divider"></div>
+          Pattern: <code>Adverb (Pos 1) + Verb (Pos 2) + Subject + ...</code>
+        </div>
+
+        <div class="grid2">
+          <div class="rule">
+            <b>Time adverbs</b> (<span class="hl2">Zeitadverbien</span>)<br/>
+            heute, gestern, morgen, danach, später, zuerst…
+          </div>
+          <div class="rule">
+            <b>Place adverbs</b> (<span class="hl2">lokale Adverbien</span>)<br/>
+            hier, dort, draußen, oben, unten, überall…
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="col-mid">Type</th>
+              <th>Example</th>
+              <th>Why it’s inversion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Time first</b></td>
+              <td>✅ <span class="hl2">Heute</span> <b>gehe</b> <span class="hl">ich</span> zur Uni.</td>
+              <td>Time is position 1 → subject moves after verb.</td>
+            </tr>
+            <tr>
+              <td><b>Place first</b></td>
+              <td>✅ <span class="hl2">Hier</span> <b>wohne</b> <span class="hl">ich</span>.</td>
+              <td>Place is position 1 → verb stays position 2.</td>
+            </tr>
+            <tr>
+              <td><b>Contrast adverb first</b></td>
+              <td>✅ <span class="hl2">Trotzdem</span> <b>mache</b> <span class="hl">ich</span> weiter.</td>
+              <td>Adverb is position 1 → inversion happens.</td>
+            </tr>
+            <tr>
+              <td><b>Another common adverb</b></td>
+              <td>✅ <span class="hl2">Allerdings</span> <b>ist</b> <span class="hl">das</span> teuer.</td>
+              <td>Verb still position 2, subject follows.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example">
+          <div><span class="kbd">Mini Trick</span></div>
+          <div>
+            If the sentence begins with something that is <b>NOT the subject</b>,
+            you will almost always get <span class="hl">Verb</span> + <span class="hl2">Subject</span>.
+          </div>
+        </div>
+      </section>
+
+      <!-- NEBENSATZ / SUBORDINATE CONJUNCTION -->
+      <section class="card" id="nebensatz">
+        <h2>3) Nebensatz — Subordinating Conjunctions <span class="tag">Verb at the end</span></h2>
+
+        <div class="rule">
+          <b>Nebensatz rule:</b> After a subordinating conjunction, the <span class="hl2">verb goes to the end</span>.
+          <div class="divider"></div>
+          Pattern: <code>Conjunction + Subject + ... + Verb(end)</code>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="col-small">Conjunction</th>
+              <th>Meaning</th>
+              <th>Example (Nebensatz)</th>
+              <th>Word order</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="hl3"><b>weil</b></span></td>
+              <td>because</td>
+              <td>✅ Ich bleibe zu Hause, <span class="hl3">weil</span> ich krank <span class="hl2">bin</span>.</td>
+              <td>verb at the end</td>
+            </tr>
+            <tr>
+              <td><span class="hl3"><b>dass</b></span></td>
+              <td>that</td>
+              <td>✅ Ich glaube, <span class="hl3">dass</span> er heute <span class="hl2">kommt</span>.</td>
+              <td>verb at the end</td>
+            </tr>
+            <tr>
+              <td><span class="hl3"><b>obwohl</b></span></td>
+              <td>although</td>
+              <td>✅ Ich gehe raus, <span class="hl3">obwohl</span> es regnet <span class="hl2">.</span></td>
+              <td>verb at the end</td>
+            </tr>
+            <tr>
+              <td><span class="hl3"><b>während</b></span></td>
+              <td>while / during</td>
+              <td>✅ Ich höre Musik, <span class="hl3">während</span> ich lerne <span class="hl2">.</span></td>
+              <td>verb at the end</td>
+            </tr>
+            <tr>
+              <td><span class="hl3"><b>bevor</b></span></td>
+              <td>before</td>
+              <td>✅ Ich esse, <span class="hl3">bevor</span> ich zur Arbeit <span class="hl2">gehe</span>.</td>
+              <td>verb at the end</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <b>Very important:</b> If the subordinate clause comes first, then the main clause begins with the verb:
+          <div class="divider"></div>
+          ✅ <span class="hl3">Weil</span> ich krank <span class="hl2">bin</span>, <span class="hl">bleibe</span> ich zu Hause.
+          <div style="margin-top:6px; color: rgba(31,41,55,.75);">
+            (Nebensatz first → main clause has inversion)
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK COMPARISON -->
+      <section class="card" id="compare">
+        <h2>4) Quick Comparison <span class="tag">One glance</span></h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="col-mid">Type</th>
+              <th>Connector</th>
+              <th>Verb position</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Main clause</b></td>
+              <td>—</td>
+              <td><span class="hl2">Position 2 (V2)</span></td>
+              <td>✅ Ich <b>gehe</b> heute nach Hause.</td>
+            </tr>
+            <tr>
+              <td><b>Position 0 (ADUSO)</b></td>
+              <td>aber/denn/und/sondern/oder</td>
+              <td><span class="hl2">Position 2 (V2)</span></td>
+              <td>✅ Ich gehe, <b>aber</b> ich <b>bleibe</b> nicht lang.</td>
+            </tr>
+            <tr>
+              <td><b>Inversion</b></td>
+              <td>time/place/adverb first</td>
+              <td><span class="hl2">Verb still position 2</span></td>
+              <td>✅ Heute <b>gehe</b> ich nach Hause.</td>
+            </tr>
+            <tr>
+              <td><b>Nebensatz</b></td>
+              <td>weil, dass, obwohl, während, bevor…</td>
+              <td><span class="hl3">Verb at the end</span></td>
+              <td>✅ …weil ich müde <b>bin</b>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <div class="footer">
+      <div class="divider"></div>
+      <b>Final Memory Line ✅</b>
+      <ul>
+        <li><span class="hl2"><b>ADUSO</b></span> = connects main clauses → <span class="hl">no change</span>.</li>
+        <li><span class="hl"><b>Inversion</b></span> = something first → <span class="hl2">verb 2</span>, subject after.</li>
+        <li><span class="hl3"><b>Nebensatz</b></span> = conjunction → <span class="hl2">verb at the end</span>.</li>
+      </ul>
+      <p style="margin:10px 0 0; color: rgba(31,41,55,.7);">
+        Print-friendly • one file • same notebook style ✨
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+
+

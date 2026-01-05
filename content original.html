@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>German Grammar — Complete Summary (Handwritten Notes Style)</title>
+
+  <!-- Handwritten-ish look (works even if Google Fonts blocked) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --paper:#fffdf7;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --good:#059669;
+      --warn:#b45309;
+      --danger:#dc2626;
+      --box:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.07);
+      --border: 2px solid rgba(31,41,55,.10);
+      --radius: 18px;
+      --marker:#ffef99;
+      --marker2:#d9f6ff;
+      --marker3:#e7ddff;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body { height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37,99,235,.08), transparent 35%),
+        radial-gradient(circle at 90% 15%, rgba(124,58,237,.10), transparent 40%),
+        radial-gradient(circle at 70% 90%, rgba(5,150,105,.10), transparent 40%),
+        linear-gradient(180deg, #ffffff, #fbfbff 40%, #fffdf7);
+      color:var(--ink);
+      font-family: "Patrick Hand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.35;
+    }
+
+    /* paper texture + notebook lines */
+    .paper{
+      max-width: 1050px;
+      margin: 32px auto;
+      padding: 34px 22px 60px;
+      background:
+        linear-gradient(transparent, transparent 25px, rgba(31,41,55,.06) 26px) 0 0 / 100% 26px,
+        linear-gradient(90deg, rgba(37,99,235,.10), rgba(37,99,235,.10)) 78px 0 / 2px 100% no-repeat,
+        var(--paper);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(31,41,55,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    /* little corner tape */
+    .paper::before, .paper::after{
+      content:"";
+      position:absolute;
+      width:120px;
+      height:30px;
+      background: rgba(255,239,153,.75);
+      top: 18px;
+      left: -18px;
+      transform: rotate(-8deg);
+      border: 1px dashed rgba(31,41,55,.15);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+    .paper::after{
+      top:auto;
+      left:auto;
+      right:-18px;
+      bottom: 18px;
+      transform: rotate(7deg);
+      background: rgba(217,246,255,.75);
+    }
+
+    header{
+      padding-left: 92px; /* aligns to the notebook margin */
+      padding-right: 12px;
+      margin-bottom: 18px;
+    }
+
+    h1{
+      font-family: "Caveat", "Patrick Hand", cursive;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      margin: 4px 0 8px;
+      letter-spacing: .5px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 0 0 14px;
+      max-width: 80ch;
+    }
+
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin: 10px 0 0;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(37,99,235,.08);
+      border: 1px solid rgba(37,99,235,.18);
+      color: rgba(31,41,55,.85);
+      font-size: 1rem;
+    }
+
+    .pill strong{
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing:.2px;
+    }
+
+    main{
+      padding-left: 92px;
+      padding-right: 12px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .card{
+      background: var(--box);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 14px;
+      box-shadow: 0 12px 22px rgba(0,0,0,.05);
+      position: relative;
+    }
+
+    .card h2{
+      font-family:"Caveat","Patrick Hand", cursive;
+      font-size: 1.9rem;
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .tag{
+      font-size: .95rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,.14);
+      color: rgba(31,41,55,.7);
+      background: rgba(31,41,55,.03);
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 820px){
+      .paper{ margin: 14px; padding: 22px 14px 50px; }
+      header, main { padding-left: 18px; }
+      .paper{ background:
+        linear-gradient(transparent, transparent 25px, rgba(31,41,55,.06) 26px) 0 0 / 100% 26px,
+        var(--paper);
+      }
+      .paper::before, .paper::after{ display:none; }
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    ul{
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+    }
+    li{ margin: 6px 0; }
+
+    .note{
+      background: rgba(124,58,237,.07);
+      border: 1px solid rgba(124,58,237,.18);
+      padding: 10px 12px;
+      border-radius: 14px;
+      margin-top: 10px;
+      color: rgba(31,41,55,.88);
+    }
+
+    .rule{
+      margin: 8px 0;
+      padding: 10px 12px;
+      border-left: 5px solid rgba(37,99,235,.45);
+      background: rgba(37,99,235,.06);
+      border-radius: 14px;
+    }
+
+    .example{
+      margin: 10px 0 0;
+      padding: 10px 12px;
+      border-left: 5px solid rgba(5,150,105,.45);
+      background: rgba(5,150,105,.06);
+      border-radius: 14px;
+    }
+
+    .bad{
+      border-left-color: rgba(220,38,38,.55);
+      background: rgba(220,38,38,.06);
+    }
+
+    .ex-title{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom: 5px;
+      color: rgba(31,41,55,.8);
+      font-weight: 700;
+    }
+
+    .kbd{
+      display:inline-block;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(31,41,55,.06);
+      border: 1px solid rgba(31,41,55,.14);
+      color: rgba(31,41,55,.85);
+      font-size: .95rem;
+    }
+
+    .hl{
+      background: linear-gradient(transparent 55%, var(--marker) 55%);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+    .hl2{
+      background: linear-gradient(transparent 55%, var(--marker2) 55%);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+    .hl3{
+      background: linear-gradient(transparent 55%, var(--marker3) 55%);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .95em;
+      background: rgba(31,41,55,.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(31,41,55,.12);
+    }
+
+    .mini{
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-top: 6px;
+    }
+
+    .footer{
+      padding-left: 92px;
+      padding-right: 12px;
+      margin-top: 22px;
+      color: rgba(31,41,55,.75);
+      font-size: 1.05rem;
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(31,41,55,.10);
+      margin: 14px 0;
+    }
+
+    .cheat{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,.12);
+      background: rgba(255,239,153,.35);
+      font-size: 1rem;
+    }
+    .chip b{
+      color: rgba(31,41,55,.95);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper">
+    <header>
+      <h1>German Grammar — Full Summary (in a nutshell)</h1>
+      <p class="subtitle">
+        A short but <span class="hl">complete</span> overview of all grammar topics from your notes,
+        with examples so you can understand everything without extra resources.
+      </p>
+
+      <div class="meta">
+        <span class="pill"><strong>Goal:</strong> quick revision</span>
+        <span class="pill"><strong>Style:</strong> rules + examples</span>
+        <span class="pill"><strong>Tip:</strong> focus on highlighted parts</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1 -->
+      <section class="card" id="sentence-structure">
+        <h2>1) Sentence Structure & Word Order <span class="tag">Satzbau</span></h2>
+
+        <div class="rule">
+          <b>German main clause rule:</b> the <span class="hl">conjugated verb</span> is usually in
+          <span class="hl2">Position 2</span> (V2).
+          <div class="mini">Time–manner–place often helps order: <code>Wann</code> → <code>Wie</code> → <code>Wo</code></div>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Verb in position 2</div>
+          <div>✅ <b>Ich</b> <span class="hl2">gehe</span> heute in die Uni.</div>
+          <div>✅ <b>Heute</b> <span class="hl2">gehe</span> ich in die Uni. (time comes first → verb still position 2)</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Inversion:</b> if something is in position 1 (time/adverb), then <span class="hl">subject moves after the verb</span>.
+          Works with adverbs like: <span class="hl3">allerdings</span>, <span class="hl3">trotzdem</span>, etc.
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Inversion</div>
+          <div>✅ <b>Trotzdem</b> <span class="hl2">gehe</span> ich ins Fitnessstudio.</div>
+          <div>✅ <b>Allerdings</b> <span class="hl2">muss</span> ich früh aufstehen.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Position 0 (Nullposition):</b> coordinating conjunctions do <span class="hl">NOT</span> change word order.
+          Remember: <span class="hl2">A D U S O</span> = <b>aber</b>, <b>denn</b>, <b>und</b>, <b>sondern</b>, <b>oder</b>.
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Coordinating conjunction</div>
+          <div>✅ Ich lerne Deutsch, <span class="hl">aber</span> ich mache viele Fehler.</div>
+          <div>✅ Ich bleibe zu Hause, <span class="hl">denn</span> ich bin krank.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Subordinate clause:</b> with subordinating conjunctions, the <span class="hl">verb goes to the end</span>.
+          Common words: <span class="hl2">weil</span>, <span class="hl2">dass</span>, <span class="hl2">obwohl</span>, <span class="hl2">während</span>, <span class="hl2">bevor</span>.
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Subordinate clause word order</div>
+          <div>✅ Ich bleibe zu Hause, <span class="hl">weil</span> ich krank <span class="hl2">bin</span>.</div>
+          <div>✅ Ich gehe spazieren, <span class="hl">obwohl</span> es regnet <span class="hl2">.</span></div>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="card" id="modal-verbs">
+        <h2>2) Modal Verbs — Konjunktiv II <span class="tag">könnte / müsste</span></h2>
+
+        <div class="rule">
+          <b>Formation (modal verbs):</b> Infinitive → Präteritum → <span class="hl2">Konjunktiv II</span><br/>
+          Example: <code>können → konnten → könnten</code>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Common uses</div>
+          <ul>
+            <li><b>Polite request:</b> <span class="hl">Könnten Sie bitte</span> langsamer sprechen?</li>
+            <li><b>Suggestion:</b> Wir <span class="hl2">könnten</span> heute ins Kino gehen.</li>
+            <li><b>Wish:</b> Ich <span class="hl2">hätte gern</span> einen Kaffee.</li>
+            <li><b>Unreal condition:</b> Wenn ich Zeit <span class="hl2">hätte</span>, würde ich reisen.</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <b>Fast tip:</b> Konjunktiv II sounds softer and more polite than normal forms.
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="card" id="conditionals">
+        <h2>3) Conditional Sentences <span class="tag">Wenn… dann…</span></h2>
+
+        <div class="grid2">
+          <div class="rule">
+            <b>Real condition:</b> possible/true in reality → normal present/future<br/>
+            Pattern: <code>Wenn + Präsens</code>, <code>Präsens/Futur</code>
+          </div>
+          <div class="rule">
+            <b>Unreal (Irreal) condition:</b> imagination / not true → Konjunktiv II<br/>
+            Pattern: <code>Wenn + Konjunktiv II</code>, <code>würde + Infinitiv</code>
+          </div>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Real vs Unreal</div>
+          <div>✅ <b>Real:</b> Wenn ich Zeit <span class="hl2">habe</span>, <span class="hl2">reise</span> ich.</div>
+          <div>✅ <b>Unreal:</b> Wenn ich mehr Zeit <span class="hl2">hätte</span>, <span class="hl2">würde</span> ich <span class="hl">reisen</span>.</div>
+        </div>
+
+        <div class="note">
+          <b>Shortcut:</b> unreal = <span class="hl2">hätte / wäre / würde</span> appears somewhere.
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="card" id="adverbs">
+        <h2>4) Adverbs & Gradation <span class="tag">Intensity</span></h2>
+
+        <div class="rule">
+          <b>Graduating adverbs</b> show intensity (how strong something is):
+          <div class="cheat">
+            <span class="chip"><b>besonders</b> <span class="hl3">+++</span></span>
+            <span class="chip"><b>sehr</b> <span class="hl2">++</span></span>
+            <span class="chip"><b>ziemlich</b> <span class="hl">+</span></span>
+            <span class="chip"><b>etwas</b> <span class="hl">-</span></span>
+            <span class="chip"><b>gar nicht</b> <span class="hl">--</span></span>
+          </div>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Intensifiers</div>
+          <div>✅ Es ist <span class="hl3">besonders</span> kalt.</div>
+          <div>✅ Der Test ist <span class="hl2">sehr</span> schwer.</div>
+          <div>✅ Ich bin <span class="hl">etwas</span> müde.</div>
+        </div>
+
+        <div class="rule">
+          <b>Extra emphasis words:</b>
+          <span class="hl2">wirklich</span> (+),
+          <span class="hl2">total</span> (++),
+          <span class="hl3">absolut</span> (+++),
+          <span class="hl">ganz/relativ</span> (soft).
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Emphasis</div>
+          <div>✅ Das ist <span class="hl2">wirklich</span> interessant.</div>
+          <div>✅ Ich finde Deutsch <span class="hl2">total</span> cool.</div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="card" id="prepositions">
+        <h2>5) Prepositions <span class="tag">Präpositionen</span></h2>
+
+        <div class="rule">
+          <b>Genitive prepositions:</b> often used in formal German.
+          <ul>
+            <li><b>Temporal:</b> <span class="hl">während</span>, <span class="hl">innerhalb</span>, <span class="hl">außerhalb</span></li>
+            <li><b>Local:</b> <span class="hl">entlang</span>, <span class="hl">oberhalb</span>, <span class="hl">unterhalb</span></li>
+            <li><b>Causal:</b> <span class="hl2">wegen</span>, <span class="hl2">aufgrund</span>, <span class="hl2">trotz</span>, <span class="hl2">dank</span></li>
+            <li><b>Modal:</b> <span class="hl">anstatt</span>, <span class="hl">mittels</span></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Genitive prepositions</div>
+          <div>✅ <span class="hl">Während</span> <b>des Unterrichts</b> spreche ich nicht.</div>
+          <div>✅ <span class="hl2">Trotz</span> <b>des Regens</b> gehen wir raus.</div>
+          <div>✅ <span class="hl2">Wegen</span> <b>des Wetters</b> bleiben wir zu Hause.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Verb + fixed preposition:</b> the preposition decides the case.
+          <ul>
+            <li><code>sich interessieren für</code> → <span class="hl2">Akkusativ</span></li>
+            <li><code>denken an</code> → <span class="hl2">Akkusativ</span></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Verb + preposition</div>
+          <div>✅ Ich interessiere mich <span class="hl">für</span> <b>den Film</b>.</div>
+          <div>✅ Ich denke <span class="hl">an</span> <b>meine Zukunft</b>.</div>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="card" id="relative-clauses">
+        <h2>6) Relative Clauses <span class="tag">Relativsätze</span></h2>
+
+        <div class="rule">
+          <b>Relative pronouns:</b> <span class="hl2">der / die / das</span> refer to a noun and match
+          <span class="hl">gender + number</span> (case depends on function inside the relative clause).
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> der/die/das</div>
+          <div>✅ Das ist der Mann, <span class="hl2">der</span> in Berlin wohnt.</div>
+          <div class="mini">(“der” = subject inside the relative clause)</div>
+        </div>
+
+        <div class="rule">
+          <b><span class="hl">wo / was</span>:</b>
+          <ul>
+            <li><span class="hl2">wo</span> → places</li>
+            <li><span class="hl2">was</span> → things/ideas (often after <code>alles</code>, <code>etwas</code>, etc.)</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> wo / was</div>
+          <div>✅ Das ist der Ort, <span class="hl2">wo</span> wir uns treffen.</div>
+          <div>✅ Sport ist <span class="hl">etwas</span>, <span class="hl2">was</span> man täglich machen sollte.</div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="card" id="infinitive">
+        <h2>7) Infinitive Constructions <span class="tag">zu + Infinitiv</span></h2>
+
+        <div class="rule">
+          <b>Use <span class="hl2">zu + Infinitiv</span></b> to shorten sentences (often replaces a “dass”-clause).
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Simple zu-infinitive</div>
+          <div>✅ Die Uni bietet Möglichkeiten an, im Ausland <span class="hl2">zu studieren</span>.</div>
+        </div>
+
+        <div class="rule">
+          <b>Separable verbs:</b> put <span class="hl">zu</span> in the middle:
+          <code>ausbauen → auszubauen</code>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Separable verb</div>
+          <div>✅ Wir planen, die Stadt <span class="hl2">auszubauen</span>.</div>
+        </div>
+
+        <div class="rule">
+          <b>“dass” alternative:</b>
+          <ul>
+            <li>Long: <code>Er freut sich darauf, dass er Theaterstücke auswählt.</code></li>
+            <li>Short: <code>Er freut sich darauf, Theaterstücke auszuwählen.</code></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="card" id="conjunctions">
+        <h2>8) Conjunctions <span class="tag">aber / weil / obwohl</span></h2>
+
+        <div class="grid2">
+          <div class="rule">
+            <b>Coordinating (ADUSO):</b> no word order change<br/>
+            <span class="hl2">aber, denn, und, sondern, oder</span>
+          </div>
+          <div class="rule">
+            <b>Subordinating:</b> verb at the end<br/>
+            <span class="hl2">weil, dass, obwohl, während, bevor</span>
+          </div>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span></div>
+          <div>✅ Ich komme, <span class="hl">aber</span> ich komme spät.</div>
+          <div>✅ Ich komme nicht, <span class="hl2">weil</span> ich krank <span class="hl2">bin</span>.</div>
+          <div>✅ Ich gehe raus, <span class="hl2">obwohl</span> es regnet <span class="hl2">.</span></div>
+        </div>
+
+        <div class="rule">
+          <b>Contrast structures:</b>
+          <ul>
+            <li><span class="hl">Einerseits… andererseits…</span></li>
+            <li><span class="hl">Im Gegensatz zu…</span></li>
+            <li><span class="hl">zwar… aber…</span></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> zwar… aber…</div>
+          <div>✅ Ich habe wenig Zeit, <span class="hl">zwar</span> bin ich müde, <span class="hl2">aber</span> ich lerne trotzdem.</div>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="card" id="pronouns">
+        <h2>9) Pronouns <span class="tag">sich / daran</span></h2>
+
+        <div class="rule">
+          <b>Reflexive verbs:</b> use <span class="hl2">mich/dich/sich</span> etc.
+          <ul>
+            <li><code>sich interessieren für</code></li>
+            <li><code>sich erholen</code></li>
+            <li><code>sich bewerben</code></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Reflexive</div>
+          <div>✅ Ich <span class="hl2">interessiere mich</span> für Musik.</div>
+          <div>✅ Er <span class="hl2">erholt sich</span> nach der Arbeit.</div>
+          <div>✅ Sie <span class="hl2">bewirbt sich</span> um einen Job.</div>
+        </div>
+
+        <div class="rule">
+          <b>Pronominal adverbs:</b> <span class="hl">da(r)- + preposition</span> (refers to “it/that”)
+          <ul>
+            <li><code>daran denken</code> = think about it</li>
+            <li><code>darauf verzichten</code> = give it up</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Pronominaladverb</div>
+          <div>✅ Ich denke <span class="hl2">daran</span>.</div>
+          <div>✅ Ich verzichte <span class="hl2">darauf</span>.</div>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="card" id="tenses">
+        <h2>10) Tenses <span class="tag">Präteritum / Perfekt / K II</span></h2>
+
+        <div class="rule">
+          <b>Präteritum:</b> common in writing & for some verbs (sein, haben, modal verbs).
+          <ul>
+            <li>Regular: <code>leben → lebte</code></li>
+            <li>Irregular: <code>finden → fand</code>, <code>essen → aß</code></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Präteritum</div>
+          <div>✅ Früher <span class="hl2">lebte</span> ich in Hamburg.</div>
+          <div>✅ Ich <span class="hl2">fand</span> den Film spannend.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Perfekt:</b> <span class="hl2">haben/sein + Partizip II</span>
+          <ul>
+            <li><code>Ich habe gegessen.</code></li>
+            <li><code>Ich bin gereist.</code></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Tip</span> When to use sein?</div>
+          <div>Use <span class="hl2">sein</span> mostly for movement/change of state: <span class="hl">gehen, fahren, kommen, bleiben, werden</span>.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Konjunktiv II:</b> unreal situations / polite tone
+          <div class="mini">Common: <code>wäre</code>, <code>hätte</code>, <code>würde</code></div>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Unreal</div>
+          <div>✅ Ich <span class="hl2">wäre</span> gern reich.</div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="card" id="vocabulary">
+        <h2>11) Vocabulary Patterns <span class="tag">Wortschatz</span></h2>
+
+        <div class="rule">
+          <b>Word fields:</b> learn vocabulary by topic.
+          <ul>
+            <li><span class="hl">Studium & Universität</span></li>
+            <li><span class="hl">In Europa lernen, leben, arbeiten</span></li>
+          </ul>
+        </div>
+
+        <div class="rule">
+          <b>Synonyms & opposites:</b>
+          <ul>
+            <li><span class="hl2">fördern</span> = unterstützen = helfen</li>
+            <li><span class="hl">trocken</span> ≠ nass</li>
+          </ul>
+        </div>
+
+        <div class="rule">
+          <b>Compound words:</b> German loves combining nouns.
+          <ul>
+            <li><code>das Austauschsemester</code></li>
+            <li><code>die Bewerbung</code></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Compound meaning</div>
+          <div><code>Austausch</code> (exchange) + <code>Semester</code> → “exchange semester”.</div>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="card" id="special-structures">
+        <h2>12) Special Structures <span class="tag">Extra tools</span></h2>
+
+        <div class="rule">
+          <b>“Irgend…” words:</b> mean “some-/any-”
+          <div class="cheat">
+            <span class="chip"><b>irgendwo</b> = somewhere</span>
+            <span class="chip"><b>irgendwas</b> = something</span>
+            <span class="chip"><b>irgendwann</b> = sometime</span>
+            <span class="chip"><b>irgendwer</b> = someone</span>
+            <span class="chip"><b>irgendwie</b> = somehow</span>
+          </div>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> Irgend-</div>
+          <div>✅ Ich möchte <span class="hl2">irgendwann</span> in Deutschland arbeiten.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>“Obwohl” vs “Trotzdem”</b>
+          <ul>
+            <li><span class="hl2">obwohl</span> → subordinate clause (verb at the end)</li>
+            <li><span class="hl2">trotzdem</span> → main clause (verb position 2)</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Although vs Nevertheless</div>
+          <div>✅ Ich gehe raus, <span class="hl2">obwohl</span> es regnet <span class="hl2">.</span></div>
+          <div>✅ Es regnet. <span class="hl">Trotzdem</span> <span class="hl2">gehe</span> ich raus.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>“Bevor” (before):</b> the <span class="hl">main clause happens first</span>.
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> bevor</div>
+          <div>✅ Ich trinke Kaffee, <span class="hl2">bevor</span> ich zur Arbeit <span class="hl2">gehe</span>.</div>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section class="card" id="passive">
+        <h2>13) Passive Voice <span class="tag">Passiv</span></h2>
+
+        <div class="rule">
+          <b>Formation:</b> <span class="hl2">werden + Partizip II</span><br/>
+          (focus = action, not who does it)
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Passive</div>
+          <div>✅ Das Buch <span class="hl2">wird gelesen</span>.</div>
+          <div class="mini">Active version: Jemand liest das Buch.</div>
+        </div>
+
+        <div class="note">
+          <b>Extra:</b> Past passive = <code>wurde + Partizip II</code> (Präteritum) or <code>ist worden</code> (Perfekt).
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section class="card" id="idioms">
+        <h2>14) Idiomatic Expressions <span class="tag">Redewendungen</span></h2>
+
+        <div class="rule">
+          Idioms are fixed expressions (don’t translate word-by-word).
+          <ul>
+            <li><span class="hl">Das Eis brechen</span> = break the ice</li>
+            <li><span class="hl">Den Ton angeben</span> = set the tone / lead</li>
+            <li><span class="hl">In die Ferne ziehen</span> = move far away</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Example</span> In a sentence</div>
+          <div>✅ Am Anfang war es still, aber dann hat jemand <span class="hl2">das Eis gebrochen</span>.</div>
+        </div>
+      </section>
+
+      <!-- 15 -->
+      <section class="card" id="small-rules">
+        <h2>15) Small but Important Rules <span class="tag">Must-know</span></h2>
+
+        <div class="rule">
+          <b>Articles with countries:</b>
+          <ul>
+            <li>Usually <span class="hl2">no article</span>: <code>in Deutschland</code>, <code>in Italien</code></li>
+            <li>Some countries have an article: <code>in der Schweiz</code>, <code>in den USA</code></li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Countries</div>
+          <div>✅ Ich wohne <span class="hl2">in Deutschland</span>.</div>
+          <div>✅ Ich arbeite <span class="hl2">in der Schweiz</span>.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Verb placement in questions:</b> verb comes <span class="hl2">first</span> (yes/no), or after question word.
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Questions</div>
+          <div>✅ <span class="hl2">Wofür</span> interessierst du dich?</div>
+          <div>✅ <span class="hl2">Für wen</span> interessierst du dich?</div>
+          <div>✅ <span class="hl2">Kommst</span> du heute?</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Negation:</b>
+          <ul>
+            <li><span class="hl2">kein</span> negates a noun with an article / no noun at all</li>
+            <li><span class="hl2">nicht</span> negates verbs, adjectives, or specific parts of the sentence</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> nicht vs kein</div>
+          <div>✅ Ich habe <span class="hl2">kein</span> Auto.</div>
+          <div>✅ Ich komme <span class="hl2">nicht</span>.</div>
+          <div>✅ Das ist <span class="hl2">nicht</span> teuer.</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rule">
+          <b>Diminutives:</b> add <span class="hl2">-chen</span> or <span class="hl2">-lein</span> (often makes words cute).
+        </div>
+
+        <div class="example">
+          <div class="ex-title"><span class="kbd">Examples</span> Diminutive</div>
+          <div>✅ der Hund → das <span class="hl2">Hündchen</span></div>
+          <div>✅ das Haus → das <span class="hl2">Häuschen</span></div>
+        </div>
+
+        <div class="note">
+          <b>Remember:</b> Diminutives are always <span class="hl3">das</span>.
+        </div>
+      </section>
+    </main>
+
+    <div class="footer">
+      <div class="divider"></div>
+      <b>Mini Revision Checklist ✅</b>
+      <ul>
+        <li>Main clause: <span class="hl2">verb position 2</span>.</li>
+        <li>Subordinate clause: <span class="hl2">verb at the end</span>.</li>
+        <li>ADUSO: <span class="hl">no word order change</span>.</li>
+        <li>Konjunktiv II: <span class="hl2">polite / unreal</span>.</li>
+        <li>Perfekt: <span class="hl2">haben/sein + Partizip II</span>.</li>
+        <li>Passive: <span class="hl2">werden + Partizip II</span>.</li>
+      </ul>
+      <p class="mini">You can print this page or keep it as a one-file cheat sheet. ✨</p>
+    </div>
+  </div>
+</body>
+</html>
